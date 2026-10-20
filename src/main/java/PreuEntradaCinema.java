@@ -1,11 +1,23 @@
-// Activitat 11 — Preu d'una entrada de cinema
-// Ajuda: per llegir una lletra amb Scanner
-//   char lletra = teclat.next().charAt(0);
+import java.util.Locale;
+import java.util.Scanner;
+
 public class PreuEntradaCinema {
     public static void main(String[] args) {
-        // TODO: l'entrada normal val 5€
-        //   Un 10% més en cap de setmana (pregunta L=laborable o C=cap de setmana)
-        //   Un 15% de descompte addicional amb Carnet Jove (pregunta S/N)
-        //   Mostra el preu final
+        Scanner teclat = new Scanner(System.in);
+        System.out.println("És un dia laborable (L) o de cap de setmana (C)?");
+        char dia = Character.toUpperCase(teclat.next().charAt(0));
+        System.out.println("Tens Carnet Jove? (S/N):");
+        char carnetJove = Character.toUpperCase(teclat.next().charAt(0));
+
+        double preu = 5.0;
+        if (dia == 'C') {
+            preu *= 1.10;
+        }
+        if (carnetJove == 'S') {
+            preu *= 0.85;
+        }
+        System.out.printf(Locale.US, "El preu de l'entrada és: %.2f €%n", preu);
+
+        teclat.close();
     }
 }

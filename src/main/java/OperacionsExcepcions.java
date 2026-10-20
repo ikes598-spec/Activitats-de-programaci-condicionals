@@ -1,8 +1,27 @@
-// Activitat 25 — Operacions aritmètiques amb control d'excepcions
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class OperacionsExcepcions {
     public static void main(String[] args) {
-        // TODO: llegeix 2 números enters i mostra suma, resta, multiplicació i divisió
-        //   Controla amb try/catch que l'usuari introdueixi números vàlids
-        //   Controla que el segon operand no sigui 0 abans de dividir
+        Scanner teclat = new Scanner(System.in);
+        try {
+            System.out.println("Introdueix el primer número enter:");
+            int primer = teclat.nextInt();
+            System.out.println("Introdueix el segon número enter:");
+            int segon = teclat.nextInt();
+
+            System.out.println(primer + " + " + segon + " = " + (primer + segon));
+            System.out.println(primer + " - " + segon + " = " + (primer - segon));
+            System.out.println(primer + " * " + segon + " = " + (primer * segon));
+            if (segon == 0) {
+                System.out.println("Error: no es pot dividir per zero");
+            } else {
+                System.out.println(primer + " / " + segon + " = " + (primer / segon));
+            }
+        } catch (InputMismatchException excepcio) {
+            System.out.println("Error: has d'introduir números enters");
+        } finally {
+            teclat.close();
+        }
     }
 }

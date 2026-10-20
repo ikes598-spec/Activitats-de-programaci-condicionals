@@ -1,9 +1,28 @@
-// Activitat 10 — Caixer, comissió i saldo
+import java.util.Locale;
+import java.util.Scanner;
+
 public class CaixerComissio {
     public static void main(String[] args) {
-        // TODO: llegeix el saldo actual, la quantitat a treure i si fas servir caixer propi (S/N)
-        //   Si NO és caixer propi, aplica una comissió del 5% sobre la quantitat
-        //   Si (quantitat + comissió) > saldo -> "No es pot fer la retirada. Saldo insuficient."
-        //   Si no, mostra la quantitat, la comissió (si n'hi ha) i el saldo restant
+        Scanner teclat = new Scanner(System.in).useLocale(Locale.US);
+        System.out.println("Introdueix el saldo actual:");
+        double saldo = teclat.nextDouble();
+        System.out.println("Introdueix la quantitat a treure:");
+        double quantitat = teclat.nextDouble();
+        System.out.println("Fas servir caixer propi? (S/N):");
+        char caixerPropi = teclat.next().charAt(0);
+
+        double comissio = Character.toUpperCase(caixerPropi) == 'S' ? 0 : quantitat * 0.05;
+        double total = quantitat + comissio;
+        if (total > saldo) {
+            System.out.println("No es pot fer la retirada. Saldo insuficient.");
+        } else {
+            System.out.printf(Locale.US, "Quantitat a treure: %.1f €%n", quantitat);
+            if (comissio > 0) {
+                System.out.printf(Locale.US, "Comissió: %.1f €%n", comissio);
+            }
+            System.out.printf(Locale.US, "Saldo restant: %.1f €%n", saldo - total);
+        }
+
+        teclat.close();
     }
 }

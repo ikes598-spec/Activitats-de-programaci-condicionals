@@ -1,11 +1,23 @@
-// Activitat 16 — Descompte per trams
+import java.util.Locale;
+import java.util.Scanner;
+
 public class DescompteTrams {
     public static void main(String[] args) {
-        // TODO: llegeix una quantitat N i resta-li el descompte segons el tram
-        //   N < 500          -> 5%
-        //   500 <= N < 1000  -> 8%
-        //   1000 <= N <= 5000 -> 15%
-        //   N > 5000         -> 25%
-        //   Mostra el resultat
+        Scanner teclat = new Scanner(System.in).useLocale(Locale.US);
+        System.out.println("Introdueix una quantitat:");
+        double quantitat = teclat.nextDouble();
+
+        double descompte;
+        if (quantitat < 500) {
+            descompte = 0.05;
+        } else if (quantitat < 1000) {
+            descompte = 0.08;
+        } else if (quantitat <= 5000) {
+            descompte = 0.15;
+        } else {
+            descompte = 0.25;
+        }
+        System.out.println("El resultat és: " + (quantitat * (1 - descompte)));
+        teclat.close();
     }
 }
