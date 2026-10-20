@@ -1,8 +1,20 @@
-// Activitat 01 — Febre
+import java.util.Scanner;
+import java.util.Locale;
+
 public class Febre {
     public static void main(String[] args) {
-        // TODO: llegeix la temperatura (real, per teclat) i digues si hi ha febre
-        //   Si temperatura > 37 -> "Tens febre, has d'anar cap a casa a descansar!!"
-        //   Si no -> un altre missatge (per exemple, que pot quedar-se)
+        Scanner teclat = new Scanner(System.in);
+        teclat.useLocale(Locale.US);
+
+        System.out.println("Entra la temperatura:");
+        double temperatura = teclat.nextDouble();
+
+        if (temperatura > 37) {
+            System.out.println("Tens febre, has d'anar cap a casa a descansar!!");
+        } else {
+            System.out.println("No tens febre");
+        }
+
+        teclat.close();
     }
 }
